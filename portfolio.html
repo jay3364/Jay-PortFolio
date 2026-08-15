@@ -3,669 +3,2293 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jaykumar Patel — Salesforce Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<title>Jaykumar Patel | Salesforce Developer</title>
+
+<meta name="description"
+      content="Jaykumar Patel - Salesforce Developer portfolio">
+
 <style>
-  :root{
-    --bg:#0A0F1C;
-    --bg-alt:#0F1729;
-    --surface:#131D33;
-    --surface-2:#182444;
-    --text:#E7ECF5;
-    --muted:#8B9AB8;
-    --blue:#2FA8E8;
-    --blue-dim:#1D6FA0;
-    --amber:#F2A65A;
-    --line: rgba(231,236,245,0.09);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    overflow-x:hidden;
-  }
-  ::selection{ background:var(--blue); color:#04101c; }
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-  .mono{ font-family:'JetBrains Mono', monospace; }
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--blue);
-    display:flex;
-    align-items:center;
-    gap:0.6em;
-  }
-  .eyebrow::before{
-    content:"";
-    width:18px; height:1px;
-    background:var(--blue);
-    display:inline-block;
-  }
+:root {
+    --bg: #05050b;
+    --card: rgba(255,255,255,.045);
+    --border: rgba(255,255,255,.10);
+    --text: #f7f5ff;
+    --muted: #a29daf;
+    --purple: #8b5cf6;
+    --cyan: #06b6d4;
+    --green: #34d399;
+}
 
-  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em; }
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-  a{ color:inherit; text-decoration:none; }
+body {
+    margin: 0;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 75% 10%, rgba(115,65,200,.18), transparent 30%),
+        radial-gradient(circle at 10% 70%, rgba(6,182,212,.07), transparent 30%),
+        var(--bg);
+    font-family: Manrope, Arial, sans-serif;
+}
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:fixed; top:0; left:0; right:0; z-index:50;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:22px 5vw;
-    backdrop-filter:blur(10px);
-    background:linear-gradient(to bottom, rgba(10,15,28,0.85), rgba(10,15,28,0));
-  }
-  .brand{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.05rem; letter-spacing:0.02em; }
-  .brand span{ color:var(--blue); }
-  .navlinks{ display:flex; gap:2.4rem; font-size:0.85rem; color:var(--muted); }
-  .navlinks a{ transition:color .25s ease; position:relative; }
-  .navlinks a:hover{ color:var(--text); }
-  .navlinks a:focus-visible, a:focus-visible{ outline:2px solid var(--blue); outline-offset:4px; border-radius:2px; }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    height:100vh;
-    min-height:640px;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-  }
-  #scene{
-    position:absolute; inset:0;
-    z-index:0;
-  }
-  .hero-veil{
-    position:absolute; inset:0;
-    background:radial-gradient(ellipse at 30% 40%, rgba(10,15,28,0) 0%, rgba(10,15,28,0.55) 60%, rgba(10,15,28,0.95) 100%);
-    pointer-events:none;
-    z-index:1;
-  }
-  .hero-inner{
-    position:relative; z-index:2;
-    padding:0 5vw;
-    max-width:760px;
-  }
-  .hero-inner .eyebrow{ margin-bottom:1.4rem; }
-  .hero-inner h1{
-    font-size:clamp(2.6rem, 6vw, 4.6rem);
-    line-height:1.03;
-  }
-  .hero-inner h1 em{
-    font-style:normal;
-    color:var(--blue);
-  }
-  .hero-sub{
-    margin-top:1.6rem;
-    max-width:520px;
-    color:var(--muted);
-    font-size:1.05rem;
-    line-height:1.65;
-  }
-  .hero-cta{
-    margin-top:2.4rem;
-    display:flex;
-    gap:1rem;
-    flex-wrap:wrap;
-  }
-  .btn{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.8rem;
-    letter-spacing:0.03em;
-    padding:0.9rem 1.5rem;
-    border-radius:2px;
-    border:1px solid var(--line);
-    transition:all .25s ease;
-    display:inline-flex; align-items:center; gap:0.6em;
-  }
-  .btn-primary{ background:var(--blue); color:#04101c; border-color:var(--blue); font-weight:600; }
-  .btn-primary:hover{ background:#57BEEF; }
-  .btn-ghost:hover{ border-color:var(--blue); color:var(--blue); }
+/* NAVBAR */
 
-  .scroll-cue{
-    position:absolute; bottom:2.6rem; left:5vw; z-index:2;
-    display:flex; align-items:center; gap:0.7rem;
-    color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.12em;
-  }
-  .scroll-cue .bar{ width:1px; height:34px; background:linear-gradient(var(--blue), transparent); animation:pulse 2s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{opacity:.3} 50%{opacity:1} }
+.nav {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
 
-  /* ---------- SECTION SHELL ---------- */
-  section{ padding:7.5rem 5vw; position:relative; }
-  .section-head{ margin-bottom:3.4rem; max-width:640px; }
-  .section-head h2{ font-size:clamp(1.8rem,3vw,2.5rem); margin-top:0.8rem; }
-  .section-head p{ color:var(--muted); margin-top:0.9rem; line-height:1.6; }
+    height: 72px;
 
-  /* ---------- ABOUT ---------- */
-  #about{ background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:4rem; align-items:start; }
-  .about-grid p{ color:var(--text); line-height:1.85; font-size:1.05rem; }
-  .about-grid p + p{ margin-top:1.2rem; }
-  .stat-list{ display:flex; flex-direction:column; gap:1.6rem; }
-  .stat{ border-left:2px solid var(--blue); padding-left:1.1rem; }
-  .stat .num{ font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:var(--blue); }
-  .stat .label{ color:var(--muted); font-size:0.85rem; margin-top:0.2rem; }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  @media (max-width:840px){ .about-grid{ grid-template-columns:1fr; } }
+    padding: 0 6vw;
 
-  /* ---------- EXPERIENCE TIMELINE ---------- */
-  .timeline{ position:relative; }
-  .timeline::before{
-    content:""; position:absolute; left:120px; top:6px; bottom:6px; width:1px;
-    background:linear-gradient(var(--blue), var(--surface-2) 90%);
-  }
-  .trow{ display:grid; grid-template-columns:120px 1fr; gap:2.5rem; padding-bottom:3.6rem; position:relative; }
-  .trow:last-child{ padding-bottom:0; }
-  .tdate{ font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--muted); padding-top:0.3rem; text-align:right; }
-  .tdot{
-    position:absolute; left:116px; top:0.5rem;
-    width:9px; height:9px; border-radius:50%;
-    background:var(--blue); box-shadow:0 0 0 4px rgba(47,168,232,0.16);
-  }
-  .tbody{ padding-left:2.5rem; }
-  .tbody h3{ font-size:1.3rem; }
-  .tbody .role-meta{ color:var(--muted); font-size:0.85rem; margin-top:0.25rem; font-family:'JetBrains Mono',monospace; }
-  .tprojects{ margin-top:1.4rem; display:flex; flex-direction:column; gap:1.1rem; }
-  .tproj{ background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:1.1rem 1.3rem; }
-  .tproj .tp-title{ font-weight:600; font-size:0.95rem; color:var(--text); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-  .tproj .tp-title span.tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--amber); font-weight:400; letter-spacing:0.04em; }
-  .tproj p{ color:var(--muted); font-size:0.88rem; margin-top:0.5rem; line-height:1.6; }
+    background: rgba(5,5,11,.75);
+    backdrop-filter: blur(20px);
 
-  @media (max-width:700px){
-    .timeline::before{ left:8px; }
-    .trow{ grid-template-columns:1fr; }
-    .tdate{ text-align:left; }
-    .tdot{ left:4px; top:0.35rem; }
-    .tbody{ padding-left:1.4rem; }
-  }
+    border-bottom: 1px solid var(--border);
+}
 
-  /* ---------- PROJECTS: 3D TILT CARDS ---------- */
-  #projects{ background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .card-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-    gap:1.6rem;
-    perspective:1200px;
-  }
-  .card{
-    background:linear-gradient(150deg, var(--surface), var(--surface-2));
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:1.8rem;
-    transform-style:preserve-3d;
-    transition:transform .12s ease, border-color .3s ease;
-    will-change:transform;
-    position:relative;
-    overflow:hidden;
-  }
-  .card::after{
-    content:"";
-    position:absolute; inset:0;
-    background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(47,168,232,0.12), transparent 60%);
-    opacity:0; transition:opacity .3s ease;
-    pointer-events:none;
-  }
-  .card:hover::after{ opacity:1; }
-  .card:hover{ border-color:rgba(47,168,232,0.35); }
-  .card .tag{ font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--blue); letter-spacing:0.06em; }
-  .card h3{ margin-top:0.7rem; font-size:1.15rem; }
-  .card p{ color:var(--muted); font-size:0.88rem; margin-top:0.7rem; line-height:1.65; }
-  .card .metric{
-    margin-top:1.2rem; padding-top:1.1rem; border-top:1px solid var(--line);
-    display:flex; align-items:baseline; gap:0.5rem;
-  }
-  .card .metric .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--amber); font-size:1.3rem; }
-  .card .metric .l{ color:var(--muted); font-size:0.78rem; }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-  /* ---------- SKILLS ---------- */
-  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:2.2rem; }
-  .skill-group .eyebrow{ margin-bottom:1rem; }
-  .chips{ display:flex; flex-wrap:wrap; gap:0.55rem; }
-  .chip{
-    font-family:'JetBrains Mono',monospace; font-size:0.78rem;
-    padding:0.5rem 0.9rem; border:1px solid var(--line); border-radius:20px;
-    color:var(--text); transition:all .25s ease;
-  }
-  .chip:hover{ border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
+    font-weight: 800;
+}
 
-  /* ---------- EDUCATION / CERTS ---------- */
-  #creds{ background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .creds-grid{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
-  .cred-list{ display:flex; flex-direction:column; gap:1.5rem; }
-  .cred-item{ border-left:2px solid var(--surface-2); padding-left:1.2rem; }
-  .cred-item .name{ font-weight:600; font-size:1rem; }
-  .cred-item .meta{ color:var(--muted); font-size:0.82rem; margin-top:0.25rem; font-family:'JetBrains Mono',monospace; }
-  @media (max-width:840px){ .creds-grid{ grid-template-columns:1fr; gap:2.6rem; } }
+.logo-box {
+    width: 38px;
+    height: 38px;
 
-  /* ---------- CONTACT / FOOTER ---------- */
-  footer{
-    padding:6rem 5vw 3rem;
-    text-align:left;
-  }
-  .contact-head{ font-size:clamp(2rem,5vw,3.4rem); max-width:620px; line-height:1.08; }
-  .contact-head span{ color:var(--blue); }
-  .contact-links{ display:flex; gap:2.5rem; flex-wrap:wrap; margin-top:2.4rem; }
-  .contact-links a{ font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:var(--muted); border-bottom:1px solid transparent; padding-bottom:2px; transition:all .25s ease; }
-  .contact-links a:hover{ color:var(--blue); border-color:var(--blue); }
-  .foot-bottom{ margin-top:5rem; padding-top:1.6rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--muted); font-size:0.75rem; font-family:'JetBrains Mono',monospace; }
+    display: grid;
+    place-items: center;
 
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    .scroll-cue .bar{ animation:none; }
-  }
-</style>
-</head>
-<body>
+    border-radius: 12px;
 
-<nav>
-  <div class="brand">JAY<span>KUMAR</span></div>
-  <div class="navlinks">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#creds">Credentials</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--cyan)
+    );
 
-<section class="hero">
-  <canvas id="scene"></canvas>
-  <div class="hero-veil"></div>
-  <div class="hero-inner">
-    <div class="eyebrow">Salesforce Developer · Ahmedabad, India</div>
-    <h1>I build the wiring<br>that lets <em>Salesforce</em><br>talk to everything.</h1>
-    <p class="hero-sub">Jaykumar Patel — Apex, LWC and Flow developer who has spent three years connecting Salesforce to WhatsApp, Jira, Google Drive and Microsoft Graph, so that data moves without anyone touching it twice.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">View the work</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
-    </div>
-  </div>
-  <div class="scroll-cue"><div class="bar"></div>SCROLL</div>
-</section>
+    box-shadow: 0 0 30px rgba(139,92,246,.4);
+}
 
-<section id="about">
-  <div class="section-head">
-    <div class="eyebrow">About</div>
-    <h2>Three years, one recurring job: making systems agree.</h2>
-  </div>
-  <div class="about-grid">
-    <div>
-      <p>Every project on this page has the same shape at its core — two systems that need to share data reliably, in real time, without a human in the loop. Whether that's a Jira board, a WhatsApp thread, a Google Shared Drive or a SharePoint folder, the job is the same: build the Apex, the triggers, and the validation that make the handoff invisible.</p>
-      <p>That's meant going deep on Apex triggers and bulkification, Lightning Web Components, Visualforce, and the REST layer that ties Salesforce to the outside world — always with test coverage above 90%, because integrations fail quietly if you let them.</p>
-    </div>
-    <div class="stat-list">
-      <div class="stat"><div class="num">3+ yrs</div><div class="label">Building on the Salesforce platform</div></div>
-      <div class="stat"><div class="num">6</div><div class="label">External systems integrated with Salesforce</div></div>
-      <div class="stat"><div class="num">90%+</div><div class="label">Apex test coverage maintained across projects</div></div>
-    </div>
-  </div>
-</section>
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
 
-<section id="experience">
-  <div class="section-head">
-    <div class="eyebrow">Experience</div>
-    <h2>Where the integrations were built.</h2>
-    <p>Three roles, in order — each one adding a new system to the list of things Salesforce can now talk to.</p>
-  </div>
+.nav-links a {
+    color: #9f9aaa;
 
-  <div class="timeline">
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
 
-    <div class="trow">
-      <div class="tdate">JAN 2025 —<br>PRESENT</div>
-      <div class="tdot"></div>
-      <div class="tbody">
-        <h3>Salesforce Engineer</h3>
-        <div class="role-meta">Neilon Technologies Pvt. Ltd. · Ahmedabad, India · Project: G-Link</div>
-        <div class="tprojects">
-          <div class="tproj">
-            <div class="tp-title">Google Drive &amp; Microsoft Graph integration <span class="tag">CURRENT</span></div>
-            <p>Built two-way file sync between Salesforce and Google Shared Drives — upload, update and delete operations kept consistent in real time via Apex REST. Extended the same pattern to a Salesforce–Microsoft Graph integration, auto-creating SharePoint/OneDrive folders from Account and Case data, with permission management for shared team environments.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    text-transform: uppercase;
+    letter-spacing: .12em;
 
-    <div class="trow">
-      <div class="tdate">MAY 2024 —<br>NOV 2024</div>
-      <div class="tdot"></div>
-      <div class="tbody">
-        <h3>Salesforce Engineer</h3>
-        <div class="role-meta">MV Clouds Pvt. Ltd. · Ahmedabad, India</div>
-        <div class="tprojects">
-          <div class="tproj">
-            <div class="tp-title">Jira Management Clone in Salesforce <span class="tag">MAY – JUL '24</span></div>
-            <p>Real-time issue sync between Jira and Salesforce with no manual step. Layered in admin-only access via permission sets, Flow-based validation for Community Users, and clear in-form error handling for incomplete submissions.</p>
-          </div>
-          <div class="tproj">
-            <div class="tp-title">WhatsApp Business API integration <span class="tag">2024</span></div>
-            <p>Two-way WhatsApp messaging inside Salesforce for order tracking, FAQs and appointment scheduling, backed by custom Apex classes and REST endpoints, batch and queueable Apex, and real-time delivery-status logging.</p>
-          </div>
-          <div class="tproj">
-            <div class="tp-title">SOQL &amp; Apex trigger optimization <span class="tag">MAY – SEP '24</span></div>
-            <p>Bulkified triggers to hold up under Salesforce governor limits, paired with LWC components wired to Apex controllers and Visualforce pages kept alive for legacy workflows.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    transition: .2s;
+}
 
-    <div class="trow">
-      <div class="tdate">JAN 2023 —<br>FEB 2024</div>
-      <div class="tdot"></div>
-      <div class="tbody">
-        <h3>Salesforce Engineer</h3>
-        <div class="role-meta">Kriit Technologies Pvt. Ltd. · Surat, India</div>
-        <div class="tprojects">
-          <div class="tproj">
-            <div class="tp-title">RocketShip Project <span class="tag">JAN – AUG '23</span></div>
-            <p>Apex triggers automating validation, record updates and workflow execution, Lightning Data Service for real-time sync, and email notifications on top of it all — backed by test classes covering diverse edge cases at 90%+ coverage.</p>
-          </div>
-          <div class="tproj">
-            <div class="tp-title">Lightning apps &amp; Visualforce platform work <span class="tag">SEP '23 – FEB '24</span></div>
-            <p>Custom Lightning components and Visualforce pages that shipped solutions 30% faster than prior methods and cut manual overhead in a critical process by half, plus automated weekly reporting that improved customer experience by 40%.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+.nav-links a:hover {
+    color: white;
+}
 
-  </div>
-</section>
+/* HERO */
 
-<section id="projects">
-  <div class="section-head">
-    <div class="eyebrow">Selected Projects</div>
-    <h2>Six integrations, one platform at the center.</h2>
-    <p>Hover a card — each one is a real system Salesforce now talks to.</p>
-  </div>
-  <div class="card-grid" id="cardGrid">
+.hero {
+    min-height: 100vh;
 
-    <div class="card">
-      <div class="tag">01 · G-Link</div>
-      <h3>Google Drive Sync</h3>
-      <p>Real-time upload, update and delete sync between Salesforce and Google Shared Drives, with folder and permission management for team environments.</p>
-      <div class="metric"><span class="n">Real-time</span><span class="l">file consistency via Apex REST</span></div>
-    </div>
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
 
-    <div class="card">
-      <div class="tag">02 · G-Link</div>
-      <h3>Microsoft Graph Integration</h3>
-      <p>Automated document storage in SharePoint/OneDrive, with dynamic folder creation driven by Salesforce Account and Case data.</p>
-      <div class="metric"><span class="n">Auto</span><span class="l">folder creation on Case data</span></div>
-    </div>
+    align-items: center;
 
-    <div class="card">
-      <div class="tag">03 · Jira Clone</div>
-      <h3>Salesforce–Jira Bridge</h3>
-      <p>Two-way issue syncing with admin-only settings access and Flow-driven validation screens for Community Users.</p>
-      <div class="metric"><span class="n">0</span><span class="l">manual steps to sync an issue</span></div>
-    </div>
+    padding: 110px 7vw 40px;
 
-    <div class="card">
-      <div class="tag">04 · MV Clouds</div>
-      <h3>WhatsApp Business API</h3>
-      <p>Two-way customer messaging for order tracking and scheduling, built on custom Apex REST endpoints and queueable jobs.</p>
-      <div class="metric"><span class="n">90%+</span><span class="l">Apex test coverage</span></div>
-    </div>
+    position: relative;
+}
 
-    <div class="card">
-      <div class="tag">05 · MV Clouds</div>
-      <h3>Bulkified Trigger Layer</h3>
-      <p>Rebuilt trigger logic to stay inside governor limits at scale, paired with LWC components wired directly to Apex controllers.</p>
-      <div class="metric"><span class="n">Governor-safe</span><span class="l">at bulk data volumes</span></div>
-    </div>
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
 
-    <div class="card">
-      <div class="tag">06 · RocketShip</div>
-      <h3>Apex Automation Core</h3>
-      <p>Trigger-driven validation, record updates and email notifications, with Lightning Data Service keeping records in sync live.</p>
-      <div class="metric"><span class="n">50%</span><span class="l">less manual overhead in target process</span></div>
-    </div>
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
 
-  </div>
-</section>
+    padding: 8px 13px;
 
-<section id="skills">
-  <div class="section-head">
-    <div class="eyebrow">Skills</div>
-    <h2>The toolkit behind the integrations.</h2>
-  </div>
-  <div class="skill-groups">
-    <div class="skill-group">
-      <div class="eyebrow">Development</div>
-      <div class="chips">
-        <span class="chip">Apex</span><span class="chip">Visualforce</span><span class="chip">LWC</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">CSS</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="eyebrow">Salesforce Platform</div>
-      <div class="chips">
-        <span class="chip">Salesforce CRM</span><span class="chip">Sales Cloud</span><span class="chip">Triggers</span><span class="chip">REST APIs</span><span class="chip">Flow</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="eyebrow">Data &amp; Automation</div>
-      <div class="chips">
-        <span class="chip">SOQL</span><span class="chip">SQL</span><span class="chip">Workflow Management</span><span class="chip">Process Builder</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="eyebrow">Working with others</div>
-      <div class="chips">
-        <span class="chip">Cross-team communication</span>
-      </div>
-    </div>
-  </div>
-</section>
+    border: 1px solid rgba(52,211,153,.25);
+    border-radius: 999px;
 
-<section id="creds">
-  <div class="section-head">
-    <div class="eyebrow">Credentials</div>
-    <h2>Education &amp; certifications.</h2>
-  </div>
-  <div class="creds-grid">
-    <div>
-      <div class="eyebrow" style="margin-bottom:1.2rem;">Education</div>
-      <div class="cred-list">
-        <div class="cred-item">
-          <div class="name">Master of Computer Applications</div>
-          <div class="meta">Ganpat University · Mahesana, India · GPA 8.59</div>
-        </div>
-        <div class="cred-item">
-          <div class="name">Bachelor in Commerce</div>
-          <div class="meta">Hemchandracharya North Gujarat University · Patan, India · GPA 6.79</div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="eyebrow" style="margin-bottom:1.2rem;">Certifications</div>
-      <div class="cred-list">
-        <div class="cred-item">
-          <div class="name">Salesforce AI Associate</div>
-          <div class="meta">Salesforce · 2024</div>
-        </div>
-        <div class="cred-item">
-          <div class="name">Ethical Hacking &amp; Penetration Testing Workshop</div>
-          <div class="meta">Learn &amp; Build · 2021</div>
-        </div>
-        <div class="cred-item">
-          <div class="name">Building Your Cybersecurity Toolkit</div>
-          <div class="meta">edX · 2021</div>
-        </div>
-        <div class="cred-item">
-          <div class="name">Tips and Tricks</div>
-          <div class="meta">NDLI Club · 2021</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    background: rgba(52,211,153,.05);
 
-<footer id="contact">
-  <div class="eyebrow">Contact</div>
-  <h2 class="contact-head">Have a Salesforce org<br>that needs to talk to <span>something else</span>?</h2>
-  <div class="contact-links">
-    <a href="mailto:pateljaybg4@gmail.com">pateljaybg4@gmail.com</a>
-    <a href="tel:+919773233450">+91 97732 33450</a>
-    <a href="https://www.linkedin.com/in/jaypatel48" target="_blank" rel="noopener">linkedin.com/in/jaypatel48</a>
-    <span class="mono" style="color:var(--muted); font-size:0.85rem;">Ahmedabad, Gujarat, India</span>
-  </div>
-  <div class="foot-bottom">
-    <span>© 2026 Jaykumar Patel</span>
-    <span>Built with Apex hours and a Three.js night sky</span>
-  </div>
-</footer>
+    color: #a8dcca;
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
-<script>
-(function(){
-  var canvas = document.getElementById('scene');
-  var hero = document.querySelector('.hero');
-  var W = hero.clientWidth, H = hero.clientHeight;
+    font: 11px "DM Mono";
+}
 
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(50, W/H, 0.1, 100);
-  camera.position.set(0, 0, 11);
+.status-dot {
+    width: 7px;
+    height: 7px;
 
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias:true, alpha:true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(W, H);
+    border-radius: 50%;
 
-  var group = new THREE.Group();
-  scene.add(group);
+    background: var(--green);
 
-  // ---- central core (Salesforce) ----
-  var coreGeo = new THREE.IcosahedronGeometry(1.1, 1);
-  var coreMat = new THREE.MeshBasicMaterial({ color: 0x2FA8E8, wireframe:true, transparent:true, opacity:0.9 });
-  var core = new THREE.Mesh(coreGeo, coreMat);
-  group.add(core);
+    box-shadow: 0 0 15px var(--green);
+}
 
-  var coreGlow = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(1.1, 1),
-    new THREE.MeshBasicMaterial({ color:0x2FA8E8, transparent:true, opacity:0.06 })
-  );
-  coreGlow.scale.set(1.6,1.6,1.6);
-  group.add(coreGlow);
+.eyebrow {
+    margin-top: 25px;
 
-  // ---- orbiting integration nodes ----
-  var labels = ['WhatsApp','Jira','Google Drive','MS Graph','REST API','LWC'];
-  var nodeCount = labels.length;
-  var radius = 4.6;
-  var nodes = [];
-  var nodeColor = 0xF2A65A;
+    color: #a78bfa;
 
-  var nodeGeo = new THREE.SphereGeometry(0.16, 16, 16);
-  var lineMat = new THREE.LineBasicMaterial({ color:0x2FA8E8, transparent:true, opacity:0.22 });
+    font: 11px "DM Mono";
+    letter-spacing: .2em;
+}
 
-  for(var i=0;i<nodeCount;i++){
-    var angle = (i / nodeCount) * Math.PI * 2;
-    var tilt = (i % 2 === 0) ? 0.4 : -0.35;
-    var x = Math.cos(angle) * radius;
-    var z = Math.sin(angle) * radius;
-    var y = Math.sin(angle * 2) * tilt * radius * 0.5;
+.hero h1 {
+    max-width: 780px;
 
-    var mat = new THREE.MeshBasicMaterial({ color: nodeColor });
-    var node = new THREE.Mesh(nodeGeo, mat);
-    node.position.set(x, y, z);
-    node.userData.baseAngle = angle;
-    node.userData.radius = radius + (i % 3) * 0.4;
-    node.userData.ySpeed = 0.4 + (i * 0.07);
-    node.userData.tilt = tilt;
-    group.add(node);
-    nodes.push(node);
+    margin: 18px 0 25px;
 
-    var pts = [ new THREE.Vector3(0,0,0), node.position.clone() ];
-    var geo = new THREE.BufferGeometry().setFromPoints(pts);
-    var line = new THREE.Line(geo, lineMat);
-    group.add(line);
-    node.userData.line = line;
-  }
+    font-size: clamp(45px,6vw,82px);
 
-  // ---- ambient starfield ----
-  var starGeo = new THREE.BufferGeometry();
-  var starCount = 240;
-  var starPos = new Float32Array(starCount * 3);
-  for(var s=0; s<starCount; s++){
-    starPos[s*3] = (Math.random()-0.5) * 40;
-    starPos[s*3+1] = (Math.random()-0.5) * 40;
-    starPos[s*3+2] = (Math.random()-0.5) * 40 - 8;
-  }
-  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  var starMat = new THREE.PointsMaterial({ color:0x3A4A6B, size:0.045, transparent:true, opacity:0.7 });
-  var stars = new THREE.Points(starGeo, starMat);
-  scene.add(stars);
+    line-height: .98;
 
-  group.rotation.x = 0.15;
+    letter-spacing: -.055em;
+}
 
-  var mouseX = 0, mouseY = 0;
-  window.addEventListener('mousemove', function(e){
-    mouseX = (e.clientX / window.innerWidth - 0.5);
-    mouseY = (e.clientY / window.innerHeight - 0.5);
-  });
+.hero h1 span {
+    color: transparent;
 
-  var clock = new THREE.Clock();
-  function animate(){
-    requestAnimationFrame(animate);
-    var t = clock.getElapsedTime();
+    background:
+        linear-gradient(
+            90deg,
+            #bba5ff,
+            #55dce9
+        );
 
-    core.rotation.y = t * 0.15;
-    core.rotation.x = t * 0.08;
-    coreGlow.rotation.y = -t * 0.05;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
 
-    for(var i=0;i<nodes.length;i++){
-      var n = nodes[i];
-      var a = n.userData.baseAngle + t * 0.18;
-      var r = n.userData.radius;
-      n.position.x = Math.cos(a) * r;
-      n.position.z = Math.sin(a) * r;
-      n.position.y = Math.sin(a * 2 + i) * n.userData.tilt * r * 0.5;
-      var positions = n.userData.line.geometry.attributes.position.array;
-      positions[3] = n.position.x;
-      positions[4] = n.position.y;
-      positions[5] = n.position.z;
-      n.userData.line.geometry.attributes.position.needsUpdate = true;
+.hero-description {
+    max-width: 620px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.85;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 9px;
+
+    padding: 14px 18px;
+
+    border-radius: 11px;
+
+    border: 1px solid var(--border);
+
+    transition: .25s;
+}
+
+.btn-primary {
+    color: #08070c;
+    background: white;
+
+    font-weight: 800;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255,255,255,.12);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,.04);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,.08);
+}
+
+.stats {
+    display: flex;
+    gap: 35px;
+
+    margin-top: 45px;
+}
+
+.stat strong {
+    display: block;
+
+    font-size: 23px;
+}
+
+.stat span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #777184;
+
+    font: 10px "DM Mono";
+
+    text-transform: uppercase;
+}
+
+/* THREE JS */
+
+#canvas-container {
+    height: 650px;
+
+    position: relative;
+}
+
+#three-canvas {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+}
+
+/* SECTIONS */
+
+.section {
+    width: min(1180px,86vw);
+
+    margin: auto;
+
+    padding: 120px 0;
+}
+
+.section-label {
+    color: #a78bfa;
+
+    font: 11px "DM Mono";
+
+    letter-spacing: .2em;
+}
+
+.section-title {
+    max-width: 720px;
+
+    margin-bottom: 55px;
+}
+
+.section-title h2 {
+    margin: 14px 0;
+
+    font-size: clamp(36px,4vw,58px);
+
+    line-height: 1.05;
+
+    letter-spacing: -.045em;
+}
+
+.section-title p {
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+/* GLASS */
+
+.glass {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 25px 80px rgba(0,0,0,.2);
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns: .7fr 1.3fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.profile {
+    padding: 35px;
+
+    text-align: center;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+
+    margin: auto;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 32px;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            #15344b
+        );
+
+    box-shadow: 0 0 60px rgba(139,92,246,.25);
+}
+
+.profile h3 {
+    margin-bottom: 5px;
+}
+
+.profile p {
+    color: #888293;
+}
+
+.profile-info {
+    margin-top: 14px;
+
+    color: #858091;
+
+    font-size: 12px;
+}
+
+.about-text {
+    color: #aaa5b5;
+
+    line-height: 1.9;
+}
+
+.about-text .lead {
+    color: white;
+
+    font-size: 20px;
+
+    line-height: 1.65;
+}
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 25px;
+}
+
+.tag {
+    padding: 9px 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    color: #ccc7d8;
+}
+
+/* EXPERIENCE */
+
+.timeline {
+    position: relative;
+
+    margin-left: 55px;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            var(--purple),
+            rgba(255,255,255,.03)
+        );
+}
+
+.job {
+    position: relative;
+
+    padding-left: 50px;
+
+    padding-bottom: 55px;
+}
+
+.dot {
+    position: absolute;
+
+    left: -5px;
+    top: 5px;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: var(--purple);
+
+    box-shadow: 0 0 20px var(--purple);
+}
+
+.date {
+    margin-bottom: 13px;
+
+    color: #777184;
+
+    font: 10px "DM Mono";
+
+    letter-spacing: .1em;
+}
+
+.job-card {
+    padding: 27px;
+}
+
+.company {
+    color: #b59df3;
+
+    font: 11px "DM Mono";
+}
+
+.job-card h3 {
+    margin: 7px 0;
+
+    font-size: 23px;
+}
+
+.project {
+    margin-top: 17px;
+
+    font-weight: 700;
+}
+
+.location {
+    margin-top: 8px;
+
+    color: #777184;
+
+    font-size: 12px;
+}
+
+.job-card ul {
+    margin-top: 18px;
+
+    color: #a7a2b2;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+.job-card li + li {
+    margin-top: 7px;
+}
+
+/* PROJECTS */
+
+.projects {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.project-card {
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(255,255,255,.2);
+}
+
+.project-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    color: #b59eff;
+
+    font-size: 22px;
+}
+
+.project-card h3 {
+    margin-top: 40px;
+
+    font-size: 25px;
+}
+
+.project-card p {
+    color: #9d98aa;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+.tech-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 20px;
+}
+
+.tech-tags span {
+    padding: 7px 9px;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.05);
+
+    color: #9d98aa;
+
+    font: 10px "DM Mono";
+}
+
+/* SKILLS */
+
+.skills {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.skill-orbit {
+    height: 420px;
+
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+}
+
+.orbit-ring {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(139,92,246,.2);
+
+    animation: rotate 16s linear infinite;
+}
+
+.orbit-one {
+    width: 270px;
+    height: 270px;
+}
+
+.orbit-two {
+    width: 390px;
+    height: 390px;
+
+    border-color: rgba(6,182,212,.13);
+
+    animation-direction: reverse;
+
+    animation-duration: 25s;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.skill-center {
+    width: 115px;
+    height: 115px;
+
+    display: grid;
+    place-items: center;
+    align-content: center;
+
+    z-index: 2;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #21163e,
+            #092a31
+        );
+
+    border: 1px solid rgba(255,255,255,.14);
+
+    box-shadow: 0 0 70px rgba(139,92,246,.3);
+}
+
+.skill-center strong {
+    font-size: 12px;
+}
+
+.skill-list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+.skill {
+    padding: 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.025);
+
+    font-size: 13px;
+}
+
+.skill small {
+    margin-right: 9px;
+
+    color: #625d6e;
+
+    font: 9px "DM Mono";
+}
+
+/* EDUCATION */
+
+.education {
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 15px;
+}
+
+.education-card {
+    padding: 25px;
+
+    min-height: 170px;
+}
+
+.education-card .icon {
+    font-size: 25px;
+
+    color: #a88df4;
+}
+
+.education-card h3 {
+    margin-top: 20px;
+
+    font-size: 17px;
+}
+
+.education-card strong {
+    display: block;
+
+    color: #aaa5b5;
+
+    font-size: 13px;
+}
+
+.education-card small {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #706a7b;
+}
+
+/* CONTACT */
+
+.contact {
+    min-height: 70vh;
+
+    display: grid;
+
+    place-items: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.contact::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 400px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(113,62,201,.25),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+}
+
+.contact-content {
+    position: relative;
+}
+
+.contact h2 {
+    font-size: clamp(45px,7vw,82px);
+
+    line-height: 1;
+
+    letter-spacing: -.055em;
+}
+
+.contact p {
+    color: var(--muted);
+}
+
+.contact-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 28px 7vw;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-top: 1px solid var(--border);
+
+    color: #706a7b;
+
+    font: 10px "DM Mono";
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .nav-links {
+        display: none;
     }
 
-    group.rotation.y += (mouseX * 0.4 - group.rotation.y * 0.15) * 0.02;
-    group.rotation.x += (0.15 + mouseY * 0.2 - group.rotation.x * 0.15) * 0.02;
+    .hero {
+        grid-template-columns: 1fr;
 
-    stars.rotation.y = t * 0.01;
+        padding-top: 100px;
+    }
 
-    renderer.render(scene, camera);
-  }
-  animate();
+    #canvas-container {
+        height: 400px;
 
-  window.addEventListener('resize', function(){
-    W = hero.clientWidth; H = hero.clientHeight;
-    camera.aspect = W/H;
+        order: -1;
+    }
+
+    .about-grid,
+    .skills {
+        grid-template-columns: 1fr;
+    }
+
+    .projects,
+    .education {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:600px) {
+
+    .hero {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .section {
+        width: 88vw;
+    }
+
+    #canvas-container {
+        height: 320px;
+    }
+
+    .stats {
+        flex-wrap: wrap;
+
+        gap: 20px;
+    }
+
+    .timeline {
+        margin-left: 8px;
+    }
+
+    .job {
+        padding-left: 35px;
+    }
+
+    .skill-list {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header class="nav">
+
+    <a href="#home" class="logo">
+        <span class="logo-box">JP</span>
+        Jaykumar<span style="color:#777184">.dev</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="#about">About</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Salesforce Developer
+        </div>
+
+        <div class="eyebrow">
+            SALESFORCE DEVELOPER
+        </div>
+
+        <h1>
+            Building
+            <span>cloud solutions</span>
+            that move businesses forward.
+        </h1>
+
+        <p class="hero-description">
+
+            I'm Jaykumar Patel, a Salesforce Developer focused on
+            Apex, Lightning Web Components, integrations and
+            automation — turning complex business processes into
+            scalable Salesforce experiences.
+
+        </p>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn btn-primary">
+                Explore My Work ↓
+            </a>
+
+            <a href="mailto:pateljaybg4@gmail.com"
+               class="btn btn-secondary">
+                Let's Connect ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>90%+</strong>
+                <span>Test Coverage</span>
+            </div>
+
+            <div class="stat">
+                <strong>30%</strong>
+                <span>Faster Solutions</span>
+            </div>
+
+            <div class="stat">
+                <strong>50%</strong>
+                <span>Less Manual Work</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3D -->
+    <div id="canvas-container">
+        <canvas id="three-canvas"></canvas>
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            01 / ABOUT
+        </div>
+
+        <h2>
+            A developer who thinks beyond code.
+        </h2>
+
+        <p>
+            Technical expertise paired with a results-driven mindset.
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="profile glass">
+
+            <div class="avatar">
+                JP
+            </div>
+
+            <h3>
+                Jaykumar Patel
+            </h3>
+
+            <p>
+                Salesforce Developer
+            </p>
+
+            <div class="profile-info">
+                📍 Ahmedabad, Gujarat, India
+            </div>
+
+            <div class="profile-info">
+                ✉ pateljaybg4@gmail.com
+            </div>
+
+            <div class="profile-info">
+                ☎ 9773233450
+            </div>
+
+        </div>
+
+
+        <div class="about-text">
+
+            <p class="lead">
+
+                Dynamic and detail-oriented Salesforce Developer
+                with a strong foundation in Salesforce CRM, Apex
+                and Lightning Web Components.
+
+            </p>
+
+            <p>
+
+                Experienced in designing, developing and implementing
+                custom solutions that optimize business processes
+                and enhance user experience.
+
+            </p>
+
+            <p>
+
+                My work spans Salesforce automation, integrations,
+                cloud file management, REST APIs, LWC, Visualforce,
+                SOQL and scalable Apex development.
+
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Apex + LWC</span>
+
+                <span class="tag">REST APIs</span>
+
+                <span class="tag">SOQL + SQL</span>
+
+                <span class="tag">Salesforce CRM</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section class="section" id="experience">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            02 / EXPERIENCE
+        </div>
+
+        <h2>
+            Where I've made an impact.
+        </h2>
+
+        <p>
+            Salesforce engineering across automation,
+            integrations and product development.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <!-- NEILON -->
+
+        <article class="job">
+
+            <span class="dot"></span>
+
+            <div class="date">
+                JAN 2025 — PRESENT
+            </div>
+
+            <div class="job-card glass">
+
+                <div class="company">
+                    NEILON TECHNOLOGIES PVT. LTD.
+                </div>
+
+                <h3>
+                    Salesforce Engineer
+                </h3>
+
+                <div class="project">
+                    G-Link
+                </div>
+
+                <div class="location">
+                    Ahmedabad, India
+                </div>
+
+                <ul>
+
+                    <li>
+                        Enabled Google Shared Drive integration
+                        for enterprise collaboration and secure
+                        file access.
+                    </li>
+
+                    <li>
+                        Developed automated Google Drive ↔ Salesforce
+                        file synchronization for upload, update and
+                        delete operations.
+                    </li>
+
+                    <li>
+                        Developed Salesforce–Microsoft Graph integration
+                        for automated SharePoint/OneDrive document storage
+                        with dynamic folders based on Salesforce Account
+                        and Case data.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+
+        <!-- MVCLOUDS -->
+
+        <article class="job">
+
+            <span class="dot"></span>
+
+            <div class="date">
+                MAY 2024 — SEP 2024
+            </div>
+
+            <div class="job-card glass">
+
+                <div class="company">
+                    MVCLOUDS PVT. LTD.
+                </div>
+
+                <h3>
+                    Salesforce Engineer
+                </h3>
+
+                <div class="project">
+                    Optimized SOQL and Apex Triggers
+                </div>
+
+                <div class="location">
+                    Ahmedabad, India
+                </div>
+
+                <ul>
+
+                    <li>
+                        Developed and bulkified Apex triggers
+                        for complex business logic.
+                    </li>
+
+                    <li>
+                        Built dynamic Lightning Web Components
+                        with Apex controller integration.
+                    </li>
+
+                    <li>
+                        Designed Visualforce pages for legacy
+                        Salesforce functionality.
+                    </li>
+
+                    <li>
+                        Implemented end-to-end API integrations
+                        and automated workflows.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+
+        <!-- JIRA -->
+
+        <article class="job">
+
+            <span class="dot"></span>
+
+            <div class="date">
+                MAY 2024 — JUL 2024
+            </div>
+
+            <div class="job-card glass">
+
+                <div class="company">
+                    MVCLOUDS PVT. LTD.
+                </div>
+
+                <h3>
+                    Salesforce Engineer
+                </h3>
+
+                <div class="project">
+                    Jira Management Clone
+                </div>
+
+                <div class="location">
+                    Ahmedabad, India
+                </div>
+
+                <ul>
+
+                    <li>
+                        Automated real-time issue synchronization
+                        between Jira and Salesforce.
+                    </li>
+
+                    <li>
+                        Restricted integration settings and logs
+                        to Salesforce administrators.
+                    </li>
+
+                    <li>
+                        Added Flow-based validations for Community Users.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+
+        <!-- WHATSAPP -->
+
+        <article class="job">
+
+            <span class="dot"></span>
+
+            <div class="date">
+                2024
+            </div>
+
+            <div class="job-card glass">
+
+                <div class="company">
+                    MVCLOUDS PVT. LTD.
+                </div>
+
+                <h3>
+                    Salesforce Engineer
+                </h3>
+
+                <div class="project">
+                    WhatsApp Integration
+                </div>
+
+                <div class="location">
+                    Ahmedabad, India
+                </div>
+
+                <ul>
+
+                    <li>
+                        Integrated Salesforce with WhatsApp
+                        Business API for two-way communication.
+                    </li>
+
+                    <li>
+                        Automated order tracking, FAQs and
+                        appointment scheduling.
+                    </li>
+
+                    <li>
+                        Built Apex classes and REST API endpoints.
+                    </li>
+
+                    <li>
+                        Created comprehensive tests with more
+                        than 90% code coverage.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+
+        <!-- KRIIT -->
+
+        <article class="job">
+
+            <span class="dot"></span>
+
+            <div class="date">
+                SEP 2023 — FEB 2024
+            </div>
+
+            <div class="job-card glass">
+
+                <div class="company">
+                    KRIIT TECHNOLOGIES PVT. LTD.
+                </div>
+
+                <h3>
+                    Salesforce Engineer
+                </h3>
+
+                <div class="project">
+                    Salesforce Lightning Applications
+                </div>
+
+                <div class="location">
+                    Surat, India
+                </div>
+
+                <ul>
+
+                    <li>
+                        Built Salesforce Lightning applications,
+                        components and Visualforce pages.
+                    </li>
+
+                    <li>
+                        Delivered solutions reported as 30% faster
+                        than earlier methods.
+                    </li>
+
+                    <li>
+                        Reduced manual overhead by 50% in a
+                        critical process.
+                    </li>
+
+                    <li>
+                        Automated weekly report generation.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+
+        <!-- ROCKETSHIP -->
+
+        <article class="job">
+
+            <span class="dot"></span>
+
+            <div class="date">
+                JAN 2023 — AUG 2023
+            </div>
+
+            <div class="job-card glass">
+
+                <div class="company">
+                    KRIIT TECHNOLOGIES PVT. LTD.
+                </div>
+
+                <h3>
+                    Salesforce Engineer
+                </h3>
+
+                <div class="project">
+                    RocketShip Project
+                </div>
+
+                <div class="location">
+                    Surat, India
+                </div>
+
+                <ul>
+
+                    <li>
+                        Developed Apex triggers for data validation,
+                        record updates and workflow execution.
+                    </li>
+
+                    <li>
+                        Used Lightning Data Service for
+                        real-time data synchronization.
+                    </li>
+
+                    <li>
+                        Implemented automated email notifications.
+                    </li>
+
+                    <li>
+                        Created test classes with more than
+                        90% code coverage.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section class="section" id="projects">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            03 / PROJECTS
+        </div>
+
+        <h2>
+            Turning requirements into systems.
+        </h2>
+
+        <p>
+            Selected projects from my Salesforce development experience.
+        </p>
+
+    </div>
+
+
+    <div class="projects">
+
+
+        <article class="project-card glass">
+
+            <div class="project-icon">
+                ◈
+            </div>
+
+            <h3>
+                G-Link
+            </h3>
+
+            <p>
+                Enterprise Salesforce file-management and
+                cloud-storage integration.
+            </p>
+
+            <div class="tech-tags">
+
+                <span>Salesforce</span>
+                <span>Google Drive</span>
+                <span>SharePoint</span>
+                <span>Microsoft Graph</span>
+                <span>Apex REST</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card glass">
+
+            <div class="project-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Jira Management Clone
+            </h3>
+
+            <p>
+                Salesforce-based Jira management workflow
+                with issue synchronization and Flow validation.
+            </p>
+
+            <div class="tech-tags">
+
+                <span>Apex</span>
+                <span>Flow</span>
+                <span>Jira API</span>
+                <span>REST</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card glass">
+
+            <div class="project-icon">
+                ◉
+            </div>
+
+            <h3>
+                WhatsApp Integration
+            </h3>
+
+            <p>
+                Two-way Salesforce communication with
+                automated customer interactions.
+            </p>
+
+            <div class="tech-tags">
+
+                <span>WhatsApp API</span>
+                <span>Apex</span>
+                <span>REST API</span>
+                <span>Queueable</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card glass">
+
+            <div class="project-icon">
+                ✦
+            </div>
+
+            <h3>
+                Salesforce Automation
+            </h3>
+
+            <p>
+                Business automation using Apex triggers,
+                Flow, Workflow and Process Builder.
+            </p>
+
+            <div class="tech-tags">
+
+                <span>Apex</span>
+                <span>Triggers</span>
+                <span>Flow</span>
+                <span>SOQL</span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section class="section" id="skills">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            04 / SKILLS
+        </div>
+
+        <h2>
+            My Salesforce toolkit.
+        </h2>
+
+        <p>
+            Technologies and capabilities from my professional experience.
+        </p>
+
+    </div>
+
+
+    <div class="skills">
+
+
+        <div class="skill-orbit">
+
+            <div class="orbit-ring orbit-one"></div>
+
+            <div class="orbit-ring orbit-two"></div>
+
+            <div class="skill-center">
+
+                <strong style="font-size:25px">
+                    ☁
+                </strong>
+
+                <strong>
+                    SALESFORCE
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill-list">
+
+            <div class="skill">
+                <small>01</small>Apex
+            </div>
+
+            <div class="skill">
+                <small>02</small>Lightning Web Components
+            </div>
+
+            <div class="skill">
+                <small>03</small>JavaScript
+            </div>
+
+            <div class="skill">
+                <small>04</small>Visualforce
+            </div>
+
+            <div class="skill">
+                <small>05</small>CSS
+            </div>
+
+            <div class="skill">
+                <small>06</small>SOQL
+            </div>
+
+            <div class="skill">
+                <small>07</small>SQL
+            </div>
+
+            <div class="skill">
+                <small>08</small>REST APIs
+            </div>
+
+            <div class="skill">
+                <small>09</small>Salesforce CRM
+            </div>
+
+            <div class="skill">
+                <small>10</small>Sales Cloud
+            </div>
+
+            <div class="skill">
+                <small>11</small>Flow
+            </div>
+
+            <div class="skill">
+                <small>12</small>Triggers
+            </div>
+
+            <div class="skill">
+                <small>13</small>Google Drive
+            </div>
+
+            <div class="skill">
+                <small>14</small>Microsoft Graph
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <div class="section-label">
+            05 / EDUCATION
+        </div>
+
+        <h2>
+            Always learning.
+        </h2>
+
+    </div>
+
+
+    <div class="education">
+
+
+        <div class="education-card glass">
+
+            <div class="icon">
+                🎓
+            </div>
+
+            <h3>
+                Master of Computer Applications
+            </h3>
+
+            <strong>
+                Ganpat University
+            </strong>
+
+            <small>
+                GPA: 8.59 · Mahesana, India
+            </small>
+
+        </div>
+
+
+        <div class="education-card glass">
+
+            <div class="icon">
+                🎓
+            </div>
+
+            <h3>
+                Bachelor of Commerce
+            </h3>
+
+            <strong>
+                Hemchandracharya North Gujarat University
+            </strong>
+
+            <small>
+                GPA: 6.79 · Patan, India
+            </small>
+
+        </div>
+
+
+        <div class="education-card glass">
+
+            <div class="icon">
+                ✦
+            </div>
+
+            <h3>
+                Salesforce AI Associate
+            </h3>
+
+            <strong>
+                Salesforce · 2024
+            </strong>
+
+            <small>
+                Certification
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="section contact" id="contact">
+
+    <div class="contact-content">
+
+        <div class="section-label">
+            06 / CONTACT
+        </div>
+
+        <h2>
+            Let's build something great.
+        </h2>
+
+        <p>
+            Have a Salesforce challenge, integration
+            or automation idea? Let's talk.
+        </p>
+
+        <div class="contact-buttons">
+
+            <a
+                class="btn btn-primary"
+                href="mailto:pateljaybg4@gmail.com"
+            >
+                ✉ Email Me ↗
+            </a>
+
+            <a
+                class="btn btn-secondary"
+                href="https://www.linkedin.com/in/jaypatel48"
+                target="_blank"
+            >
+                LinkedIn ↗
+            </a>
+
+        </div>
+
+        <p style="font:11px 'DM Mono';margin-top:22px">
+            pateljaybg4@gmail.com · 9773233450
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <span>
+        © 2026 Jaykumar Patel
+    </span>
+
+    <span>
+        Salesforce Developer · Ahmedabad, India
+    </span>
+
+</footer>
+
+
+<!-- THREE.JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
+
+<script>
+
+const canvas =
+    document.getElementById("three-canvas");
+
+const container =
+    document.getElementById("canvas-container");
+
+
+/* SCENE */
+
+const scene =
+    new THREE.Scene();
+
+scene.fog =
+    new THREE.FogExp2(
+        0x05050b,
+        0.045
+    );
+
+
+/* CAMERA */
+
+const camera =
+    new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth /
+        container.clientHeight,
+        0.1,
+        100
+    );
+
+camera.position.z = 7;
+
+
+/* RENDERER */
+
+const renderer =
+    new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: true
+    });
+
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
+
+renderer.setSize(
+    container.clientWidth,
+    container.clientHeight
+);
+
+
+/* LIGHT */
+
+const ambient =
+    new THREE.AmbientLight(
+        0x8b7cff,
+        1.5
+    );
+
+scene.add(ambient);
+
+
+const purpleLight =
+    new THREE.PointLight(
+        0x8b5cf6,
+        30,
+        20
+    );
+
+purpleLight.position.set(
+    3,
+    3,
+    4
+);
+
+scene.add(purpleLight);
+
+
+const cyanLight =
+    new THREE.PointLight(
+        0x06b6d4,
+        25,
+        20
+    );
+
+cyanLight.position.set(
+    -3,
+    -2,
+    3
+);
+
+scene.add(cyanLight);
+
+
+/* MAIN GROUP */
+
+const group =
+    new THREE.Group();
+
+scene.add(group);
+
+
+/* 3D CORE */
+
+const core =
+    new THREE.Mesh(
+
+        new THREE.IcosahedronGeometry(
+            1.3,
+            4
+        ),
+
+        new THREE.MeshStandardMaterial({
+
+            color: 0x8b5cf6,
+
+            wireframe: true,
+
+            transparent: true,
+
+            opacity: .8,
+
+            emissive: 0x5b21b6,
+
+            emissiveIntensity: 1.8
+
+        })
+
+    );
+
+group.add(core);
+
+
+/* INNER CORE */
+
+const inner =
+    new THREE.Mesh(
+
+        new THREE.IcosahedronGeometry(
+            .85,
+            3
+        ),
+
+        new THREE.MeshStandardMaterial({
+
+            color: 0x06b6d4,
+
+            wireframe: true,
+
+            transparent: true,
+
+            opacity: .3,
+
+            emissive: 0x064e5b
+
+        })
+
+    );
+
+group.add(inner);
+
+
+/* ORBIT RINGS */
+
+const ringSizes = [
+    1.8,
+    2.3,
+    2.8
+];
+
+
+ringSizes.forEach(
+    (radius,index) => {
+
+        const ring =
+            new THREE.Mesh(
+
+                new THREE.TorusGeometry(
+                    radius,
+                    .009,
+                    8,
+                    180
+                ),
+
+                new THREE.MeshBasicMaterial({
+
+                    color:
+                        index % 2
+                        ? 0x06b6d4
+                        : 0xa78bfa,
+
+                    transparent: true,
+
+                    opacity: .55
+
+                })
+
+            );
+
+        ring.rotation.x =
+            .5 + index * .4;
+
+        ring.rotation.y =
+            index * .4;
+
+        group.add(ring);
+
+    }
+);
+
+
+/* PARTICLES */
+
+const positions = [];
+
+for(let i = 0; i < 900; i++){
+
+    const radius =
+        3.5 + Math.random() * 4;
+
+    const angle =
+        Math.random() *
+        Math.PI * 2;
+
+    const x =
+        Math.cos(angle) *
+        radius;
+
+    const y =
+        Math.sin(angle) *
+        radius;
+
+    const z =
+        (Math.random() - .5) *
+        7;
+
+    positions.push(x,y,z);
+
+}
+
+
+const particleGeometry =
+    new THREE.BufferGeometry();
+
+particleGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(
+        positions,
+        3
+    )
+);
+
+
+const particleMaterial =
+    new THREE.PointsMaterial({
+
+        color: 0xc4b5fd,
+
+        size: .018,
+
+        transparent: true,
+
+        opacity: .8
+
+    });
+
+
+const particles =
+    new THREE.Points(
+        particleGeometry,
+        particleMaterial
+    );
+
+scene.add(particles);
+
+
+/* MOUSE */
+
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener(
+    "pointermove",
+    event => {
+
+        mouseX =
+            (event.clientX /
+            window.innerWidth -
+            .5) * .6;
+
+        mouseY =
+            (event.clientY /
+            window.innerHeight -
+            .5) * .4;
+
+    }
+);
+
+
+/* RESIZE */
+
+function resize(){
+
+    const width =
+        container.clientWidth;
+
+    const height =
+        container.clientHeight;
+
+    camera.aspect =
+        width / height;
+
     camera.updateProjectionMatrix();
-    renderer.setSize(W, H);
-  });
-})();
 
-// ---- 3D tilt for project cards ----
-(function(){
-  var cards = document.querySelectorAll('.card');
-  cards.forEach(function(card){
-    card.addEventListener('mousemove', function(e){
-      var rect = card.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      var cx = rect.width / 2, cy = rect.height / 2;
-      var rx = ((y - cy) / cy) * -6;
-      var ry = ((x - cx) / cx) * 6;
-      card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(4px)';
-      card.style.setProperty('--mx', x + 'px');
-      card.style.setProperty('--my', y + 'px');
-    });
-    card.addEventListener('mouseleave', function(){
-      card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
-    });
-  });
-})();
+    renderer.setSize(
+        width,
+        height
+    );
+
+}
+
+window.addEventListener(
+    "resize",
+    resize
+);
+
+resize();
+
+
+/* ANIMATION */
+
+const clock =
+    new THREE.Clock();
+
+
+function animate(){
+
+    requestAnimationFrame(
+        animate
+    );
+
+    const time =
+        clock.getElapsedTime();
+
+
+    group.rotation.y =
+        time * .16 +
+        mouseX * .3;
+
+    group.rotation.x =
+        Math.sin(time * .35) * .12 +
+        mouseY * .2;
+
+
+    core.rotation.z =
+        time * .12;
+
+    inner.rotation.y =
+        -time * .22;
+
+
+    particles.rotation.y =
+        time * .012;
+
+
+    camera.position.x +=
+        (
+            mouseX * .7 -
+            camera.position.x
+        ) * .025;
+
+
+    camera.position.y +=
+        (
+            -mouseY * .5 -
+            camera.position.y
+        ) * .025;
+
+
+    camera.lookAt(
+        0,
+        0,
+        0
+    );
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+
+animate();
+
 </script>
 
 </body>
